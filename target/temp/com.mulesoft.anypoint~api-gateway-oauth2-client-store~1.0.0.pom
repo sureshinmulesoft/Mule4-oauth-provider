@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--TODO AGW-2596: Remove all forest pom structures and use only trees-->
+    <parent>
+        <groupId>com.mulesoft.anypoint</groupId>
+        <artifactId>api-gateway-extensions-parent</artifactId>
+        <version>1.2.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>api-gateway-oauth2-client-store</artifactId>
+    <version>1.0.0</version>
+    <packaging>mule-extension</packaging>
+
+    <name>API Gateway OAuth2 Provider Client Store</name>
+    <description>API Gateway OAuth2 Provider Client Store</description>
+
+    <properties>
+        <licensePath>../LICENSE_HEADER.txt</licensePath>
+        <formatterConfigPath>../formatter.xml</formatterConfigPath>
+        <oauthProviderModuleVersion>1.0.3</oauthProviderModuleVersion>
+    </properties>
+
+    <dependencies>
+
+        <!--Connector Dependencies-->
+
+        <dependency>
+            <groupId>com.mulesoft.anypoint</groupId>
+            <artifactId>api-gateway-api</artifactId>
+            <version>${apiGatewayApiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.modules</groupId>
+            <artifactId>mule-oauth2-provider-module</artifactId>
+            <version>${oauthProviderModuleVersion}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+
+        <!--Test Dependencies-->
+
+        <dependency>
+            <groupId>com.mulesoft.anypoint</groupId>
+            <artifactId>api-gateway-reflection</artifactId>
+            <version>${apiGatewayVersion}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <!--
+            This repository definition is redundant as it's already present in the
+            parent pom.
+
+            However, when building the Enterprise modules with an empty local repository
+            for the first time, the build *has* to know where to get its parent from and
+            there's no way around this repo definition.
+        -->
+        <repository>
+            <id>mule-ee-releases</id>
+            <name>Internal Release Repo</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/ci-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>mule-ee-snapshots</id>
+            <name>Internal Release Repo</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/ci-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mule-ee-releases</id>
+            <name>Internal Release Repo</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/ci-releases/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
